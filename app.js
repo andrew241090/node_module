@@ -46,11 +46,6 @@ fs.mkdir(path.join(__dirname, 'main', 'inPerson'), (err) => {
 });
 
 
-// fs.writeFileSync(path.join(__dirname, 'main', 'online','user.txt'), 'onlineUsers');
-//
-// fs.writeFileSync(path.join(__dirname, 'main', 'inPerson','person.txt') ,'inPersonUsers');
-//
-
 for (let i = 0; i < onlineUsers.length; i++) {
     for (const key in onlineUsers[i]) {
 fs.appendFile(path.join(__dirname, 'main', 'online', 'user.txt'),`\n${key}: ${onlineUsers[i][key]}`, (err)=>{
