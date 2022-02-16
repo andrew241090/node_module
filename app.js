@@ -60,7 +60,7 @@ fs.appendFile(path.join(__dirname, 'main', 'online', 'user.txt'),`\n${key}: ${on
 
 for (let i = 0; i < inPersonUsers.length; i++) {
     for (const key in inPersonUsers[i]) {
-        fs.appendFile(path.join(__dirname, 'main', 'inPerson', 'person.txt'),`\n${key}: ${onlineUsers[i][key]}`, (err)=>{
+        fs.appendFile(path.join(__dirname, 'main', 'inPerson', 'person.txt'),`\n${key}: ${inPersonUsers[i][key]}`, (err)=>{
             if(err){
                 console.log(err)
                 throw err;
