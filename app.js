@@ -22,6 +22,8 @@ const inPersonUsers = [
     {name: "Ira", age: 20, city: "Kyiv"},
 ];
 
+
+
 fs.mkdir(path.join(__dirname, 'main'), (err) => {
     if (err) {
         console.log(err)
@@ -44,31 +46,30 @@ fs.mkdir(path.join(__dirname, 'main', 'inPerson'), (err) => {
 });
 
 
-fs.writeFileSync(path.join(__dirname, 'main', 'online','user.txt'), 'onlineUsers');
+// fs.writeFileSync(path.join(__dirname, 'main', 'online','user.txt'), 'onlineUsers');
+//
+// fs.writeFileSync(path.join(__dirname, 'main', 'inPerson','person.txt') ,'inPersonUsers');
+//
 
-fs.writeFileSync(path.join(__dirname, 'main', 'inPerson','person.txt') ,'inPersonUsers');
-
-// for (let i = 0; i < onlineUsers.length; i++) {
-//     fs.writeFile(path.join(__dirname, 'main', 'online', 'user.txt'),
-//         `\n name:${onlineUsers[i].name},\n age:${onlineUsers[i].age}, \n city:${onlineUsers[i].city}`,
-//         {flag: 'a'}, (err) => {
-//             if (err) {
-//                 console.log(err)
-//                 throw err
-//             }
-//         })
-// }
-
-
-// for (let i = 0; i < inPersonUsers.length; i++) {
-//     fs.writeFile(path.join(__dirname, 'main', 'inPerson', 'person.txt'),
-//         `\n name:${inPersonUsers[i].name}, age:${inPersonUsers[i].age}, city:${inPersonUsers[i].city}`,
-//         {flag: 'a'}, (err) => {
-//             if (err) {
-//                 console.log(err)
-//                 throw err
-//             }
-//         })
-// }
+for (let i = 0; i < onlineUsers.length; i++) {
+    for (const key in onlineUsers[i]) {
+fs.appendFile(path.join(__dirname, 'main', 'online', 'user.txt'),`\n${key}: ${onlineUsers[i][key]}`, (err)=>{
+    if(err){
+        console.log(err)
+        throw err;
+    }
+} )
+    }
+}
 
 
+for (let i = 0; i < inPersonUsers.length; i++) {
+    for (const key in inPersonUsers[i]) {
+        fs.appendFile(path.join(__dirname, 'main', 'inPerson', 'person.txt'),`\n${key}: ${onlineUsers[i][key]}`, (err)=>{
+            if(err){
+                console.log(err)
+                throw err;
+            }
+        } )
+    }
+}
